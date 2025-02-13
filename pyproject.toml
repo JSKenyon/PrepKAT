@@ -11,6 +11,15 @@ requires-python = ">=3.10"
 dependencies = [
 ]
 
+[tool.poetry.dependencies]
+python = ">=3.10, <3.13"
+python-casacore = ">=3.6.1"
+tbump = ">=6.10.0, <=6.11.0"
+typer = ">=0.15.1"
+numba = ">=0.61.0"
+
+[tool.poetry.scripts]
+prepflip = 'prepkat.main:feed_flip'
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
