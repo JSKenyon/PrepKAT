@@ -9,9 +9,7 @@ from numba import njit
 
 FLIP_KEYWORD = "PREPKAT_FEED_FLIP"
 
-from timedec import timedec
 
-@timedec
 def _feed_flip(
     ms_path: Annotated[
         Path,

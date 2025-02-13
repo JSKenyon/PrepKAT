@@ -19,7 +19,7 @@ typer = ">=0.15.1"
 numba = ">=0.61.0"
 
 [tool.poetry.scripts]
-prepflip = 'prepkat.main:feed_flip'
+katflip = 'prepkat.main:feed_flip'
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
