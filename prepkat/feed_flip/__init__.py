@@ -5,6 +5,7 @@ from typing import List, Optional
 import pyrap.tables as pt
 import numpy as np
 from rich import print
+from rich.progress import track
 from numba import njit
 
 FLIP_KEYWORD = "PREPKAT_FEED_FLIP"
@@ -58,7 +59,9 @@ def _feed_flip(
         chunk_n_row = 10000
         chunk = np.empty((chunk_n_row, *col_shape[1:]), dtype=col_dtype)
 
-        for start_row in range(0, n_row, chunk_n_row):
+        desc = f"[cyan]Flipping {col}:[/cyan]"
+
+        for start_row in track(range(0, n_row, chunk_n_row), description=desc):
             
             sel = slice(0, min(n_row - start_row, chunk_n_row))
 
@@ -81,7 +84,7 @@ def _feed_flip(
         main_table.putcolkeyword(col, FLIP_KEYWORD, True)
 
         print(
-            f"[bold green] Successfully flipped column: {col}.[/bold green]"
+            f"[bold green]Successfully flipped column: {col}.[/bold green]"
         )
 
     main_table.close()
